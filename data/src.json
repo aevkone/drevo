@@ -661,6 +661,11 @@
     "sure": false
    },
    {
+    "what": "скан сверен 01.11.2026: «Preyszagoła d. 11 [Januarii 1784]… Ego Antonius Miedzygorski Vice Praepositus Wądz[iagolensis] benedixi matrimonium inter G[enerosum] D[ominum] Thomam Skirgayłło de Preyszagoła juvenem et G. D. Theophilam Kirklewska viduam; praesentibus testibus… Michaele Klepacki, Joanne Zerdecki et Antonio…» — жених назван «из Прейшаголы», кавалер; что это Томаш, крещённый в 1752 г. в Антогине, по-прежнему не доказано",
+    "ref": "LVIA ф. 1349 оп. 1 д. 11, кадр 281 (стр. 276), браки, январь 1784 — https://www.epaveldas.lt/preview?id=1349%2F1%2F11",
+    "sure": true
+   },
+   {
     "what": "ум. 22.04.1824, Прейшагола, «JP, 70 лет, вдовец»",
     "ref": "Geneteka — индекс метрик Вендзяголы",
     "sure": false
@@ -828,6 +833,11 @@
     "what": "Ян Скиргайло и Катажина Шатыньская (Szatyńska), Антогине: крещения детей Мацей 1714, Розалия 1716, Ян 1718",
     "ref": "Geneteka (geneteka.genealodzy.pl, Литва) — индекс метрик Вендзягольского костёла, LVIA ф. 1349 (индекс, скан не сверен)",
     "sure": false
+   },
+   {
+    "what": "отец Мацея (ум. 09.04.1725) и Яна (ум. 1720) — подтверждено сканом записей о смерти",
+    "ref": "LVIA ф. 1349 оп. 1 д. 11, кадры 311 и 314 — https://www.epaveldas.lt/preview?id=1349%2F1%2F11",
+    "sure": true
    }
   ],
   "arch": [
@@ -836,12 +846,17 @@
   ]
  },
  "KSZ": {
-  "conf": "ind",
+  "conf": "doc",
   "src": [
    {
     "what": "мать Мацея (1714, ум. 1725), Розалии (1716), Яна (1718)",
     "ref": "Geneteka (geneteka.genealodzy.pl, Литва) — индекс метрик Вендзяголы",
     "sure": false
+   },
+   {
+    "what": "скан сверен 01.11.2026: «Antoginis d. 9 [Aprilis 1725]. Demortuus Nobilis Puer Mathias, Par[entum] Joannis Skirgayłło et Catharinae Szatyńska, ann[orum] 12, sepultus…» — смерть 9 апреля 1725 г.; родители названы прямо",
+    "ref": "LVIA ф. 1349 оп. 1 д. 11, кадр 314 (стр. 309), смерти, апрель 1725 — https://www.epaveldas.lt/preview?id=1349%2F1%2F11",
+    "sure": true
    }
   ],
   "arch": [
@@ -874,12 +889,17 @@
   "arch": []
  },
  "MSK": {
-  "conf": "fam",
+  "conf": "doc",
   "src": [
    {
     "what": "крещ. 1714, ум. 1725, Антогине, сын Яна и Катажины Шатыньской",
     "ref": "Geneteka (geneteka.genealodzy.pl, Литва) — индекс метрик Вендзяголы",
     "sure": false
+   },
+   {
+    "what": "скан сверен 01.11.2026: «Antoginis d. 9 [Aprilis 1725]. Demortuus Nobilis Puer Mathias, Par[entum] Joannis Skirgayłło et Catharinae Szatyńska, ann[orum] 12, sepultus…» — смерть 9 апреля 1725 г.; родители названы прямо",
+    "ref": "LVIA ф. 1349 оп. 1 д. 11, кадр 314 (стр. 309), смерти, апрель 1725 — https://www.epaveldas.lt/preview?id=1349%2F1%2F11",
+    "sure": true
    }
   ],
   "arch": []
@@ -909,12 +929,17 @@
   ]
  },
  "JSM": {
-  "conf": "fam",
+  "conf": "doc",
   "src": [
    {
     "what": "крещ. 04.06.1718, Антогине, сын Яна и Катажины Шатыньской; ум. 20.07.1720, акт 28, «3 года»",
     "ref": "Geneteka — индекс метрик Вендзяголы (LVIA ф. 1349)",
     "sure": false
+   },
+   {
+    "what": "скан сверен 01.11.2026: «Antoginis d. 20. Demortuus Puer Joannes ann[orum] 2 (или 3 — цифра неясна) G[enerosi] D[omini] Joannis Skirgayłło, sepultus est ibidem suis sepulturis» — смерть, 1720 г. (запись после 29 июня; заголовок месяца в копии пропущен, по индексу — июль)",
+    "ref": "LVIA ф. 1349 оп. 1 д. 11, кадр 311 (стр. 306), смерти 1720 — https://www.epaveldas.lt/preview?id=1349%2F1%2F11",
+    "sure": true
    }
   ],
   "arch": []
