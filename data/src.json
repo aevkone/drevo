@@ -1008,7 +1008,7 @@
   "arch": []
  },
  "PSK": {
-  "conf": "ind",
+  "conf": "doc",
   "src": [
    {
     "what": "Пётр Скиргайло и Ядвига Ибяньская, Антогине: крещение дочери Евы 08.10.1699 — одна из самых ранних записей рода в метриках (LVIA ф. 1349 оп. 1 д. 11). Отец ли он Яна-старшего — гипотеза (единственная другая семья Скиргайло в Антогине в 1699–1720)",
@@ -1016,9 +1016,9 @@
     "sure": false
    },
    {
-    "what": "Кадр НЕ получен: из этой сессии epaveldas.lt сбрасывает TLS-соединение (connection reset), europeana.eu, commons.wikimedia.org, metrikai.lt, archive.org запрещены сетевой политикой. Ожидаемая запись: крещение Евы, дочери Петра Скиргайло и Ядвиги Ибяньской, 08.10.1699, Антогине — по-видимому, самый начальный лист книги (книга начинается 1699 г.; октябрь 1699 — первые кадры, ориентировочно 1–10). Транскрипция не сделана: скан не видел. Нужен ручной скриншот владельцем.",
-    "ref": "LVIA f. 1349 ap. 1 b. 11 (Vandžiogalos RKB krikšto ir santuokos metrikų knyga 1699–1797, mirties 1713–1799) — epaveldas.lt (поиск «Vandžiogalos RKB 1699»); вероятное зеркало Europeana: https://www.europeana.eu/item/2021801/1349_1_11 (не проверено — хост недоступен) · поиск 31.10.2026",
-    "sure": false
+    "what": "скан сверен 01.11.2026: «Antoginie 8. B[aptisa]tus est Eva Petri Skirgaj[ło] matris Hedvigae Ibianska Leg[itimorum] Con[iugum]. L[evantes]: Casimirus Ibianski cum Hedwiga Harewiczowna» — крещение Евы, дочери законных супругов Петра Скиргайло и Ядвиги Ибяньской, 8 октября 1699, Антогине; восприемники Казимир Ибяньский и Ядвига Харевичувна (чтение фамилии неуверенное). Книга — дословная копия с оригинала («Ex Originali de Verbo ad Verbum Excerptus»)",
+    "ref": "LVIA ф. 1349 оп. 1 д. 11, кадр 6 (стр. 3, октябрь 1699) — https://www.epaveldas.lt/preview?id=1349%2F1%2F11",
+    "sure": true
    },
    {
     "what": "Книга LVIA ф. 1349 оп. 1 д. 11 описана в научной литературе как «Vandžiogalos bažnyčios 1699–1797 m. krikšto ir vedybų bei 1713–1799 m. mirties metrikų knyga», доступная на epaveldas.lt (по сноске в работе ВДУ; видел только сниппет поиска, PDF не открылся). Т.е. запись 1699 г. — в самом начале тома, там же браки 1784 (TSK) и смерти 1720/1725 (JSM, MSK).",
@@ -1032,23 +1032,33 @@
   ]
  },
  "JIB": {
-  "conf": "fam",
+  "conf": "doc",
   "src": [
    {
     "what": "мать Евы (08.10.1699), Антогине",
     "ref": "Geneteka — индекс метрик Вендзяголы",
     "sure": false
+   },
+   {
+    "what": "скан сверен 01.11.2026: «Antoginie 8. B[aptisa]tus est Eva Petri Skirgaj[ło] matris Hedvigae Ibianska Leg[itimorum] Con[iugum]. L[evantes]: Casimirus Ibianski cum Hedwiga Harewiczowna» — крещение Евы, дочери законных супругов Петра Скиргайло и Ядвиги Ибяньской, 8 октября 1699, Антогине; восприемники Казимир Ибяньский и Ядвига Харевичувна (чтение фамилии неуверенное). Книга — дословная копия с оригинала («Ex Originali de Verbo ad Verbum Excerptus»)",
+    "ref": "LVIA ф. 1349 оп. 1 д. 11, кадр 6 (стр. 3, октябрь 1699) — https://www.epaveldas.lt/preview?id=1349%2F1%2F11",
+    "sure": true
    }
   ],
   "arch": []
  },
  "ESK": {
-  "conf": "fam",
+  "conf": "doc",
   "src": [
    {
     "what": "крещ. 08.10.1699, Антогине, дочь Петра и Ядвиги Ибяньской",
     "ref": "Geneteka — индекс метрик Вендзяголы (LVIA ф. 1349 оп. 1 д. 11)",
     "sure": false
+   },
+   {
+    "what": "скан сверен 01.11.2026: «Antoginie 8. B[aptisa]tus est Eva Petri Skirgaj[ło] matris Hedvigae Ibianska Leg[itimorum] Con[iugum]. L[evantes]: Casimirus Ibianski cum Hedwiga Harewiczowna» — крещение Евы, дочери законных супругов Петра Скиргайло и Ядвиги Ибяньской, 8 октября 1699, Антогине; восприемники Казимир Ибяньский и Ядвига Харевичувна (чтение фамилии неуверенное). Книга — дословная копия с оригинала («Ex Originali de Verbo ad Verbum Excerptus»)",
+    "ref": "LVIA ф. 1349 оп. 1 д. 11, кадр 6 (стр. 3, октябрь 1699) — https://www.epaveldas.lt/preview?id=1349%2F1%2F11",
+    "sure": true
    }
   ],
   "arch": []
