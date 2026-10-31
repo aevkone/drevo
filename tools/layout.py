@@ -9,19 +9,22 @@ import json
 import pathlib
 
 D = pathlib.Path(__file__).resolve().parent.parent / 'data'
-GAP_SPOUSE, GAP_SIB, GAP_OTHER = 1.0, 1.12, 1.4
+GAP_SPOUSE, GAP_SIB, GAP_OTHER = 1.0, 1.08, 1.25
 
 # Порядок слева направо по поколениям. Отцовская линия слева, материнская справа,
 # прямая линия Валерии Валерьевны — ось посередине. Кого нет в списке — встаёт по старому x.
 ORDER = {
     3: 'PUR DAS AKI TCH TSK',
     4: 'VDS VCS JDS OMS VKS KMS BOF AAS AHN THN',
-    5: 'AGL LDS ANL ADS SMD BGS ATS SES FRS FAS ANT ALA AGN',
+    5: 'AGL LDS ANL ADS SMD BGS ATS FAS ANT SES FRS ALA AGN',
     6: 'FMD OSA ANA SNL KKU MMA ANS ALB ELN HPN',
     7: 'IGO OSO MSL AGK AG2 PMM EBF IKR VSL RAI MPN',
     8: 'HGR HBS MPB VLO TAO ANO VST NPM PYU GIK LVS MRA',
     9: 'TGR AGR MGR ABS OBS SVV VAV ISV ASV IYP IRO',
 }
+# Прямая линия (ось): её карточки весят больше, остальные подстраиваются вокруг
+SPINE = 'LIC AVT VAV VLO OSO OSA ANT AAS TSK JS2 JSK PSK'.split()
+SPINE_W = 6.0
 
 
 def main():
@@ -108,14 +111,15 @@ def main():
                 if i:
                     o += gap(u[i - 1], p)
                 inner[p] = o
-        uw = [sum(want[p] - inner[p] for p in u) / len(u) for u in units]
+        wt = lambda p: SPINE_W if p in SPINE else 1.0
+        uw = [sum((want[p] - inner[p]) * wt(p) for p in u) / sum(wt(p) for p in u) for u in units]
         off = [0.0]
         for i in range(1, len(units)):
             prev = units[i - 1]
             off.append(off[-1] + inner[prev[-1]] + gap(prev[-1], units[i][0]))
         blocks = []
         for i, u in enumerate(units):
-            blocks.append([uw[i] - off[i], len(u), i, i])
+            blocks.append([uw[i] - off[i], sum(wt(p) for p in u), i, i])
             while len(blocks) > 1 and blocks[-2][0] > blocks[-1][0]:
                 v2, w2, s2, e2 = blocks.pop()
                 v1, w1, s1, _ = blocks.pop()
