@@ -15,15 +15,15 @@ GAP_SPOUSE, GAP_SIB, GAP_OTHER = 1.0, 1.08, 1.25
 # прямая линия Валерии Валерьевны — ось посередине. Кого нет в списке — встаёт по старому x.
 ORDER = {
     3: 'PUR DAS AKI TCH TSK',
-    4: 'VDS VCS JDS OMS VKS KMS BOF AAS AHN THN',
-    5: 'AGL LDS ANL ADS SMD BGS ATS FAS ANT SES FRS ALA AGN',
-    6: 'FMD OSA ANA SNL KKU MMA ANS ALB ELN HPN',
+    4: 'VDS VCS JDS KZE ELS OMS VKS KMS BOF AAS AHN THN',
+    5: 'ANT FPT AGL LDS ANL ADS SMD BGS ATS FAS SES FRS ALA AGN',
+    6: 'OSA AN2 KZA ANA SNL FMD KKU MMA ANS ALB ELN HPN',
     7: 'IGO OSO MSL AGK AG2 PMM EBF IKR VSL RAI MPN',
     8: 'HGR HBS MPB VLO TAO ANO VST NPM PYU GIK LVS MRA',
     9: 'TGR AGR MGR ABS OBS SVV VAV ISV ASV IYP IRO',
 }
 # Прямая линия (ось): её карточки весят больше, остальные подстраиваются вокруг
-SPINE = 'LIC AVT VAV VLO OSO OSA ANT AAS TSK JS2 JSK PSK'.split()
+SPINE = 'LIC AVT VAV VLO OSO OSA ANT KZE DAS JS2 JSK PSK'.split()
 SPINE_W = 6.0
 
 
