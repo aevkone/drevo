@@ -9,18 +9,20 @@ import json
 import pathlib
 
 D = pathlib.Path(__file__).resolve().parent.parent / 'data'
-GAP_SPOUSE, GAP_SIB, GAP_OTHER = 1.0, 1.08, 1.25
+GAP_SPOUSE, GAP_SIB, GAP_OTHER = 1.0, 1.06, 1.18
 
 # Порядок слева направо по поколениям. Отцовская линия слева, материнская справа,
 # прямая линия Валерии Валерьевны — ось посередине. Кого нет в списке — встаёт по старому x.
 ORDER = {
     3: 'PUR DAS AKI TCH TSK',
     4: 'VDS VCS JDS KZE ELS OMS VKS KMS BOF AAS AHN THN',
-    5: 'AMK AUR PUK MMK ANT FPT MKI AGL LDS ANL ADS SMD BGS ATS FAS SES FRS ALA AGN SAN MMA YDP ETP',
-    6: 'OSA AN2 KZA IGA JGD ANA SNL FMD FSA MKO ASA KKU MPM ANS AYP PYP OYP AKP MYP ALB KOK ELN HPN',
-    7: 'IGO OSO BSK MSK2 MSL AVS DFS AGK AG2 NZK NFK PKP EPK PMM EBF IKR VSL EP1 NAP RAI VBN AAP MPN',
+    5: 'AUR PUK AMK MMK ANT FPT MKI AGL LDS SMD BGS ANL ADS ATS FAS SES FRS ALA AGN SAN MMA YDP ETP',
+    6: 'OSA AN2 KZA IGA JGD ANA SNL FMD FSA MKO ASA KKU MPM ANS AYP PYP OYP AKP MYP KOK ALB ELN HPN',
+    7: 'IGO OSO BSK MSK2 MSL AVS DFS AGK AG2 PKP NZK NFK EPK PMM EBF IKR VSL RAI VBN EP1 NAP AAP MPN',
     8: 'HGR HBS MPB VLO TAO ANO RAS VAS EAS AN3 VST NPM PYU FPM PPM APM GIK LVS MRA NVK',
     9: 'TGR AGR MGR ABS OBS SVV VAV ISV ASV IYP IRO LMB IMB',
+    10: 'AVT ICS MIP UIP',
+    11: 'LIC',
 }
 # Прямая линия (ось): её карточки весят больше, остальные подстраиваются вокруг
 SPINE = 'LIC AVT VAV VLO OSO OSA ANT KZE DAS JS2 JSK PSK'.split()
@@ -145,11 +147,75 @@ def main():
             pack(ids, want)
 
     gs = sorted(rows)
-    for g in gs:  # стартовая плотная расстановка в нужном порядке
-        pack(rows[g], {p: i * 1.0 for i, p in enumerate(rows[g])})
-    for _ in range(80):
-        sweep(gs, down, up)
-        sweep(gs[::-1], up, down)
+
+    def place(iters):
+        for g in gs:  # стартовая плотная расстановка в нужном порядке
+            pack(rows[g], {p: i * 1.0 for i, p in enumerate(rows[g])})
+        for _ in range(iters):
+            sweep(gs, down, up)
+            sweep(gs[::-1], up, down)
+
+    links = [(a, b, k) for a, b, kids, _ in couples for k in kids]
+
+    def cost():
+        # пересечения линий родитель→ребёнок дороже всего, затем ширина и длина линий
+        ed = [(gen[a], marker(a, b), x[k]) for a, b, k in links]
+        cr = sum(1 for i, e in enumerate(ed) for f in ed[i + 1:]
+                 if e[0] == f[0] and (e[1] - f[1]) * (e[2] - f[2]) < -1e-9)
+        dev = sum(abs(m - k) for _, m, k in ed)
+        # чужие карточки внутри группы братьев и сестёр сбивают с толку
+        mix = 0
+        for _, _, kids, _ in couples:
+            ks = [k for k in kids if k in gen]
+            if len(ks) > 1:
+                row = rows[gen[ks[0]]]
+                ii = [row.index(k) for k in ks]
+                mix += sum(1 for p in row[min(ii):max(ii) + 1] if p not in ks and not any(
+                    frozenset((p, k)) in spouses for k in ks))
+        sp = sum(abs(x[a] - x[b]) for a, b, _, _ in couples if a and b)
+        return cr * 20 + mix * 40 + dev + sp * 3 + (max(x.values()) - min(x.values())) * 2
+
+    # поиск порядка: меняем местами соседние блоки (супруги — один блок), пока это
+    # уменьшает пересечения и растяжку линий; прямая линия (ось) не двигается
+    def blocks(ids):
+        out = []
+        for p in ids:
+            if out and (frozenset((out[-1][-1], p)) in spouses or
+                        any(frozenset((out[-1][-1], c)) in spouses and frozenset((p, c)) in spouses for c in ids)):
+                out[-1].append(p)
+            else:
+                out.append([p])
+        return out
+
+    place(25)
+    best = cost()
+    for _ in range(3):
+        better = False
+        for g in gs:
+            i = 0
+            while True:
+                bl = blocks(rows[g])
+                if i >= len(bl) - 1:
+                    break
+                if any(p in SPINE for p in bl[i] + bl[i + 1]):
+                    i += 1
+                    continue
+                old = rows[g][:]
+                bl[i], bl[i + 1] = bl[i + 1], bl[i]
+                rows[g][:] = [p for u in bl for p in u]
+                place(25)
+                c = cost()
+                if c < best - 1e-6:
+                    best, better = c, True
+                else:
+                    rows[g][:] = old
+                i += 1
+        if not better:
+            break
+    place(80)
+    print('порядок:')
+    for g in gs:
+        print('    %d: %r,' % (g, ' '.join(rows[g])))
 
     lo = min(x.values())
     for p in P:
